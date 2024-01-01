@@ -1,0 +1,58 @@
+function create_Pokemon(name, Pokemon_id, img){
+    return {
+        Pokemon_name: name,
+        id: Pokemon_id,
+        img: img
+    }
+}
+function generate_id(){
+    return Date.now()
+}
+let Pokemon_array = []
+let highlight
+let selected_id
+
+let names_container = document.querySelector('.name-container')
+let name_input = document.querySelector('.name-input')
+let enter_name = document.querySelector('.enter-name')
+let Pokemon_image = document.querySelector('.Pokemon-img')
+let img_input = document.querySelector('.img-input')
+
+enter_name.addEventListener('click', ()=>{
+    let Pokemon_name = name_input.value;
+    let img = img_input.value;
+    if(Pokemon_name.trim() !== '' && img.trim() !== ''){
+        Pokemon_image.style.display = 'block'
+        ///name
+        let new_pokemon = document.createElement('li')
+        new_pokemon.classList.add('name')
+        let new_pokemon_id = generate_id()
+        name_input.value = ''
+        new_pokemon.textContent = Pokemon_name
+        names_container.append(new_pokemon)
+
+        ///img
+        Pokemon_image.setAttribute('src', `${img}`)
+        img_input.value = ''
+
+
+        Pokemon_array.push(create_Pokemon(Pokemon_name, new_pokemon_id,  `${img}`))
+
+        new_pokemon.addEventListener('click',()=>{
+            if(highlight){
+                highlight.classList.remove('highlight')
+            }
+            new_pokemon.classList.add('highlight')
+            highlight = new_pokemon
+
+            selected_id = Pokemon_array.find((Pokemon)=> Pokemon.id === new_pokemon_id)
+
+            if(selected_id){
+                Pokemon_image.setAttribute('src', `${selected_id.img}`)
+                console.log(selected_id)
+            }
+
+        })
+    }
+    console.log(Pokemon_array)
+})
