@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="pokemon-website">
+        <div class="box-1">
+            <div class="name-container">
+            </div>
+            <div class="controls">
+                <input type="text" class="name-input">
+                <button class="enter-name">Enter</button>
+                <input type="text" class="img-input">
+            </div>
+        </div>
+        <div class="box-2">
+            <div class="image-container">
+                <img src="" alt="" class="Pokemon-img">
+            </div>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
